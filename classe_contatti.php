@@ -1,5 +1,6 @@
 <?php
- 
+
+ include_once("classe_conn.php");  // Proprio al volo  $my=conntrue();
 include("classe_utenti.php");
  
  

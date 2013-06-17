@@ -62,13 +62,15 @@ $('#userpersonal label').html("<p class='insertutente' style='cursor:pointer;'>E
  * */
 if(isset($_REQUEST['utentenein'])){
      $email =$_REQUEST['utentenein'];   
+    
+    
     ?>
     $('title').html("<?php echo $email ;?> -Creati ");
 
     var newcl ="Attenzione utente assente  --Crearlo - <a href='' onclick='return false;' class='newcl'  >Si creo-- (<?php echo $email; ?>)</a>" ;
     $('#userpersonal label').html(newcl);
 
-    function      confermanew(){
+    function   confermanew(){
     $('.newcl').click( function (){
     $('#userpersonal label').html("ATTENDERE ......");
 

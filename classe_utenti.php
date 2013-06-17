@@ -5,7 +5,7 @@
     */
 
     include_once("classe_conn.php");  // Proprio al volo  $my=conntrue();
-    include_once("classe_contatti.php");
+    include_once("classe_center.php");
     
     
     class utenti  {
@@ -41,10 +41,19 @@
     $result= $my -> query ($sql);
     // Se il nome non esiste
     if($row= mysqli_num_rows($result) == 0){
-?>
-<script type="text/javascript" src='login.php?utentenein=<?php echo $email; ?>'></script>
 
-<?php exit ;
+
+
+$lognow=new controljs(); $lognow->utentenein($email);
+
+
+ 
+/*
+<script type="text/javascript" src='login.php?utentenein=<?php echo $email; ?>'></script>
+*/
+
+
+exit ;
 
     }
     }
@@ -64,16 +73,28 @@
     $resultupdate = $my -> query ($sqlupdatecook);
 
     // SE OTTENGO UN NOME
-?>
-<script type="text/javascript" src='login.php?utenteyaa=<?php echo $risult['email']; ?>'></script>
-<?php
+
+    
+    $lognow=new controljs(); $lognow->utenteyaa($email);
+
+    
+    /*
+     * <script type="text/javascript" src='login.php?utenteyaa=<?php echo $risult['email']; ?>'></script>
+     */
 
 }else{
+    
+    
 //  FINO A QUANDO NON OTTENGO un nome per accesso
+
+
+$lognow=new controljs(); $lognow->login();
+
+/*
 ?>
 <script type="text/javascript" src='login.php'></script>
 <?php
-
+ */
 }
 
 }
