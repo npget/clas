@@ -8,50 +8,44 @@
 </head>
 <style>a{text-decoration: none;}</style>
 
-
-
 <?php
 
+include "Dbconn.php";
+include "Client.php";
+include "Contact.php";
+include "Scriptjs.php";
 
-require_once "classe_center.php";
+/*
+new Dbconn();
+new Client();
+new Contact();
+new Scriptjs();
 
-//istanzio class ma non ho capito ancora l utilizzo del perchè devo passare caratteri dentro
-//visto che li ho dichiarati dentro la class ... capirò
+ * 
+ */
 
-$valore = new contatti("nome1", "nome2", "nome3", "nome4", "nome5", "nome6");
-
-//ottengo il form per le insert e i ltext per il login ... SOLO DOPO IL LOGIN
-
-echo $valore -> form();
-
+//new npget\Dbconn();
+//new npget\Client();
+//new npget\Contact();
+//new npget\Scriptjs();
 
 
 
 
 
 ?>
-
 <div id='printresult'> </div>
 
-<?php
 
-
-
-
-// VARIATO il cookie con la sessione......... 
-      // Se esiste già la sessione 
-      // automitico login ... passo il cookie 
-   
-    $controlcookie = new utenti();
+<?php   
+    $controlcookie = new npget\Client();
    
    
     //$controlcookie->trovasesiste($_COOKIE['mycooker'],"");
     $controlcookie -> trovasesiste(session_id(),"");
     
   //  setcookie("mycooker", session_id(), time() + 3000000);
-
-
-
-?>
+  
+  ?>
 
 <script type='text/javascript' src='mynova.js' ></script>

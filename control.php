@@ -2,10 +2,14 @@
 session_start();
 error_reporting(0);
 
-include 'classe_center.php';
+//include 'classe_center.php';
 
 
 
+include "Dbconn.php";
+include "Client.php";
+include "Contact.php";
+include "Scriptjs.php";
 
 
 
