@@ -11,7 +11,7 @@ var $sito;
 
     public function __construct()
     {
-   //     echo __CLASS__."<br>";
+       echo __CLASS__."<br>";
     }
     
     

@@ -1,26 +1,33 @@
 <?php
 namespace npget;
-class Dbconn
-{
 
-    public function __construct()
-    {
-   //     echo __CLASS__."<br>";
-    }
- 
- public function conntrue(){
-        $my = new \mysqli("localhost", "root", "new-password","test");
+$hostname = "localhost";
+$username = "root";
+$password = "new-password";
+$database = "test";
+$mysqli = mysqli_connect($hostname, $username, $password, $database);
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}else{echo "KO.connect!";
 
-        if($my ->connect_errno){ echo ("Connessione DB Assente :<br>".$my->connect_error );}
-        
-        return $my ;
-        
+//var_dump($mysqli);
 
-     
-        
-        }
-     //   public function 
-    
-    
 }
 
+//magic quotes logic
+if (get_magic_quotes_gpc())
+{
+function stripslashes_deep($value)
+{
+    $value = is_array($value) ?
+    array_map('stripslashes_deep', $value) :
+    stripslashes($value);
+    return $value;
+}
+$_POST = array_map('stripslashes_deep', $_POST);
+$_GET = array_map('stripslashes_deep', $_GET);
+$_COOKIE = array_map('stripslashes_deep', $_COOKIE);
+$_REQUEST = array_map('stripslashes_deep', $_REQUEST);
+}
