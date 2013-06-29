@@ -1,6 +1,11 @@
 clas
 ====
 
+
+NOn è importante cosa fa MAcome lo SI FA ..! 
+
+
+
 Ma come mi ripeto spessissssimo ultimamente ....
 CERCO IL MODO PER SCRIVER MEGLIO E IMPARARE così + COSE ....
 
@@ -9,11 +14,7 @@ CERCO IL MODO PER SCRIVER MEGLIO E IMPARARE così + COSE ....
 1 Piccolo DB 
 Tabella utenti ,
 Tabella Contatti ,
-Ho cambiato molte volte , la scrittura in modo da recepire da chi mi consiglia il modo corretto 
-di scrivere sta mini cosa , un risultato di quello che fa sta in 
 
-
-http://novaproget.com/demo/firstclass/
 
 l utente  si logga solo con una parola  le impostazioni stanno dentro mynova.js ...
 
