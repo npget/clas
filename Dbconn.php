@@ -1,20 +1,27 @@
 <?php
-namespace npget;
+//namespace npget;
 
+
+function connx(){
 $hostname = "localhost";
 $username = "root";
 $password = "new-password";
 $database = "test";
 $mysqli = mysqli_connect($hostname, $username, $password, $database);
-/* check connection */
+
+/* check  */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
-}else{echo "KO.connect!";
-
+}else{
+return $mysqli;
 //var_dump($mysqli);
 
 }
+}
+
+
+
 
 //magic quotes logic
 if (get_magic_quotes_gpc())

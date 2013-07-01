@@ -10,27 +10,17 @@
 
 <?php
 
-include "Dbconn.php";
-include "Client.php";
-include "Contact.php";
-include "Scriptjs.php";
-
-/*
-new Dbconn();
-new Client();
-new Contact();
-new Scriptjs();
-
- * 
- */
-
-//new npget\Dbconn();
-//new npget\Client();
-//new npget\Contact();
-//new npget\Scriptjs();
+//include "Dbconn.php";
+include_once  "Client.php";
+include_once "Contact.php";
+include_once  "Scriptjs.php";
 
 
+$valore = new npget\Contact("nome1", "nome2", "nome3", "nome4", "nome5", "nome6");
 
+//ottengo il form per le insert e i ltext per il login ... SOLO DOPO IL LOGIN
+
+echo $valore -> form();
 
 
 ?>
@@ -38,14 +28,16 @@ new Scriptjs();
 
 
 <?php   
-    $controlcookie = new npget\Client();
+
+
+$controlcookie = new npget\Client();
+
+
+       //$controlcookie->trovasesiste($_COOKIE['mycooker'],"");
+   $controlcookie -> trovasesiste(session_id(),"");
+
    
-   
-    //$controlcookie->trovasesiste($_COOKIE['mycooker'],"");
-    $controlcookie -> trovasesiste(session_id(),"");
-    
   //  setcookie("mycooker", session_id(), time() + 3000000);
-  
   ?>
 
 <script type='text/javascript' src='mynova.js' ></script>

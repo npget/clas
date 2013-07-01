@@ -1,5 +1,7 @@
 <?php
 namespace npget;
+
+include_once 'Dbconn.php';
 class Contact
 {
     var $nome;
@@ -11,7 +13,7 @@ var $sito;
 
     public function __construct()
     {
-       echo __CLASS__."<br>";
+ //     echo __CLASS__."<br>";
     }
     
     
@@ -56,7 +58,7 @@ sito:
     // DOPO il login
     //STAMPO AL VOLO TUTTO ilcontenuto gemellato all utente --------
     public function printresult($idutente,$nome){
-    $my=conntrue();
+    
 
     // $my = new mysqli("localhost", "root", "new-password","test");
     $sql="SELECT * from contact where id_exutente = $idutente ";
@@ -70,7 +72,7 @@ sito:
     }
 
     $sql.="order by id_contact desc limit 0,200 ";
-    $result= $my -> query ($sql);
+    $result= connx() -> query ($sql);
 
     echo "<table border='1' style='width:100%;'><thead><th>nome</th>
 <th>cognome</th><th>email</th><th>azienda </th>
@@ -103,10 +105,10 @@ sito:
     $lorifo.= $v.'='.$names.'&';
     }
     parse_str($lorifo);
-    $my=conntrue();
+
 
     $sql="INSERT into contact values(null,'$nome','$cognome','$email','$azienda','$telefono','$sito','$id','$datain' ) ";
-    $result= $my -> query ($sql);
+    $result= connx() -> query ($sql);
     print_r($lorifo);
 
     }

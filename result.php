@@ -1,21 +1,21 @@
 <?php
 session_start(); 
 
-error_reporting(E_WARNING);
+//error_reporting(E_WARNING);
 
 
 
 //include_once "classe_center.php"; 
 
-include "Dbconn.php";
-include "Client.php";
-include "Contact.php";
-include "Scriptjs.php";
+//include_once "Dbconn.php";
+include_once  "Client.php";
+include_once "Contact.php";
+include_once "Scriptjs.php";
 
 
 //istanzio variabile per  passarla alla query 
  //printresult è la query che trova nome se il get[trovanomne]  esiste  
-$resultprint= new Contact();
+$resultprint= new npget\Contact();
 
 
 if(isset($_GET['trovanome'])){

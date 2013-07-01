@@ -1,15 +1,15 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(E_ALL);
 
 //include 'classe_center.php';
 
 
 
-include "Dbconn.php";
+//include "Dbconn.php";
 include "Client.php";
 include "Contact.php";
-include "Scriptjs.php";
+//include "Scriptjs.php";
 
 
 
@@ -25,7 +25,7 @@ include "Scriptjs.php";
  // se l utente vuole loaggarsi con nuovo nome ....
 // INSERT NUOVI CONTATTI
 if(($_POST['nome']!="")){
-    $perinsert= new contatti();
+    $perinsert= new npget\Contact();
     $perinsert -> insertdb($_POST);
    
 
@@ -48,14 +48,18 @@ if(($_POST['nome']!="")){
 
 
 // VEDO SE IL  
-if($_POST ['newclient']!=""){
+if($_POST['newclient']!=""){
+
+    
     $email=htmlspecialchars(trim($_POST['newclient']));
    // $mycooker=$_COOKIE['mycooker'];
     $mycooker=session_id();
-$c=new utenti();
+$c= new npget\Client() ;
 
 // QUI PASSO LA CREDENZIALE E VEDO SE ESISTE 
 $c->trovasesiste("",$email);
+
+
 }
 
 
@@ -70,7 +74,7 @@ if($_POST ['confermautente']=="yes"){
     $email=htmlspecialchars(trim($_POST['nomeperinsert']));
       // $mycooker=$_COOKIE['mycooker'];
        $mycooker=session_id();
-$c=new utenti();
+$c=new npget\Client();
 $c->insertutente( $mycooker,$email);
 // QUI PASSO LA CREDENZIALE E VEDO SE ESISTE 
 }

@@ -1,8 +1,8 @@
 <?php
-
 namespace npget;
-//include "Dbconn.php" ;
 
+include_once "Dbconn.php";
+include_once "Scriptjs.php";
 
 class Client {
 
@@ -10,62 +10,58 @@ class Client {
     var $email;
 
     public function __construct() {
-
-
-
-          echo __CLASS__."<br>";
+        //   echo __CLASS__."<br>";
     }
 
+
+
     function trovasesiste($mycooker, $email) {
-
-        // $my= new Dbconn;
-        //  $my->conntrue() ;
-
+     print_r(error_get_last()); 
 
         $sql = 'SELECT * from utenti where ';
 
+
+        
         // se passo il cookie
         // se il cooki o sessione che passo è presente nel DB
         if ($mycooker != "") {
-            $sql.= "mycooker ='$mycooker'   ";
-          
-            var_dump($mysqli);
-//
-//                      $result=query($sql);
-           
-//            $result->conntrue()->query($sql);
-            
-//  $res -> query($sql);
+            $sql.= "mycooker  =   '$mycooker'    ";
+            $result = connx()->query($sql);
         }
+
+
 
         // $email Sarebbe il nome che l utente posta per fare login
         // QUI MI POPOLA SE CLICKKA UN  NUOVO ENTRATO O SE IL NOME esiste nel DB
 
         if ($email != "") {
+           
+            
             $sql.= "email='$email'   ";
-            
-            
-$result=$mysqli-> query($sql);
+
+
+            $result = connx()->query($sql);
 
 // Se il nome non esiste
-            if ($row = mysqli_num_rows($result) == 0) {
+            if (mysqli_num_rows($result) == 0) {
+               
                 $lognow = new Scriptjs();
                 $lognow->utentenein($email);
-
-                /*
-                  <script type="text/javascript" src='login.php?utentenein=<?php echo $email; ?>'></script>
-                 */
-                exit;
+           echo $email;
+            return;
+         
+            
+            
             }
         }
-        var_dump($result);
-        echo $sql;
-        echo $row = mysqli_num_rows($result);
+
+
+
 
 
         // QUI PASSA SE L UTENTE ESISTE DA NOME O DA COOKIE ;; O SESSIONE AL MOMENT
-        if ($row = mysqli_num_rows($result) >= 1) {
-
+        if (mysqli_num_rows($result) > 0) {
+          //  echo "vc";
 
             $risult = mysqli_fetch_array($result);
 
@@ -76,7 +72,7 @@ $result=$mysqli-> query($sql);
 
             $sqlupdatecook = "UPDATE utenti set mycooker='$cook' where id_utente='$_SESSION[id_utente]'   ";
 
-            $resultupdate = $my->query($sqlupdatecook);
+            $resultupdate = connx()->query($sqlupdatecook);
 
             // SE OTTENGO UN NOME
 
@@ -89,7 +85,7 @@ $result=$mysqli-> query($sql);
              * <script type="text/javascript" src='login.php?utenteyaa=<?php echo $risult['email']; ?>'></script>
              */
         } else {
-
+        
 
 //  FINO A QUANDO NON OTTENGO un nome per accesso
 
@@ -97,22 +93,21 @@ $result=$mysqli-> query($sql);
             $lognow = new Scriptjs();
             $lognow->login();
 
-            /*
-              ?>
-              <script type="text/javascript" src='login.php'></script>
-              <?php
-             */
+      
         }
-    }
+    
+        
+        
+        }
 
+    
+    
+    
     function trovatuttiutenti() {
-        //$my= new Dbconn();
-        //$my->conntrue();
+
 
         $sql = "SELECT * from utenti order by id_utente desc limit 0,1000";
-//$result= $my -> query ($sql);
-        $result = new Dbconn();
-        $result->conntrue()->query($sql);
+        $result = connx()->query($sql);
         echo "utenti :(" . mysqli_num_rows($result) . ')-->';
         while ($row = mysqli_fetch_assoc($result)) {
             $names = substr_replace($row['email'], '..', 0, 2);
@@ -122,10 +117,9 @@ $result=$mysqli-> query($sql);
 
     function insertutente($mycooker, $email) {
 
-        $my = conntrue();
 
         $sql = "INSERT into utenti values (null,'$email','$mycooker') ";
-        $result = $my->query($sql);
+        $result = connx()->query($sql);
         if ($result) {
             sleep(2);
         } else {
