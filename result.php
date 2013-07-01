@@ -1,13 +1,11 @@
 <?php
 session_start(); 
 
-//error_reporting(E_WARNING);
+error_reporting(E_WARNING);
 
 
 
-//include_once "classe_center.php"; 
 
-//include_once "Dbconn.php";
 include_once  "Client.php";
 include_once "Contact.php";
 include_once "Scriptjs.php";

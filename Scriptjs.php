@@ -84,12 +84,12 @@ $('#userpersonal label').html("<p class='insertutente' style='cursor:pointer;'>E
 if(isset($email)){
     
     
-     $email =$_REQUEST['utentenein'];   
+    //$email =$_REQUEST['utentenein'];   
     ?>
     <script>
-    $('title').html("<?php echo $email ;?> -Creati ");
+    $('title').html("<?php echo $email ;?> -Registrati  ");
 
-    var newcl ="Attenzione utente assente  --Crearlo - <a href='' onclick='return false;' class='newcl'  >Si creo-- (<?php echo $email; ?>)</a>" ;
+    var newcl ="Attenzione utente assente  --Crearlo - ?!-<><a href='' onclick='return false;' class='newcl'  >Si creami- come - (<?php echo $email; ?>)</a>" ;
     $('#userpersonal label').html(newcl);
 
     $('.newcl').click( function (){
@@ -112,6 +112,7 @@ if(isset($email)){
     
     
 function utenteyaa ( $email ) {
+
       ?>   
  <script>
         

@@ -12,13 +12,9 @@
   	$(".hideresult").hide('fast');
   	$("#trova").hide('fast');
  
- $(".vedirisult").click(function(){
-
- 
-
- 	
- 		$(".vedirisult").hide('slow');
- 		$(".hideresult").show('slow');
+ $(".vedirisult").click(function(){ 	
+ 	$(".vedirisult").hide('slow');
+ 	$(".hideresult").show('slow');
    	$("#trova").show('fast');
  	$("#printresult").fadeIn("slow").load("result.php");
 
@@ -29,7 +25,7 @@
   $(".hideresult").click(function(){
 
  	$(this).hide('slow');
- 	 		$(".vedirisult").show('slow');
+ 	$(".vedirisult").show('slow');
  	$("#printresult").fadeOut("slow");
 
  });
@@ -37,7 +33,7 @@
  
  
  
- 
+ //registra su contact rubrica 
             function invapost(){
            $.post("control.php",$("#formcont").serialize()).done(function(data){
 $("#printresult").load("result.php");
@@ -54,16 +50,3 @@ $(r).css({'border':'3px solid red'})
 }else{$(r).css({'border':'3px solid green'})
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

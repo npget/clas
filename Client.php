@@ -15,10 +15,10 @@ class Client {
 
 
 
-    function trovasesiste($mycooker, $email) {
+    function trovasesiste($mycooker,$email) {
      print_r(error_get_last()); 
-
-        $sql = 'SELECT * from utenti where ';
+    //var_dump($email);
+    $sql = 'SELECT * from utenti where ';
 
 
         
@@ -27,6 +27,9 @@ class Client {
         if ($mycooker != "") {
             $sql.= "mycooker  =   '$mycooker'    ";
             $result = connx()->query($sql);
+        
+    
+            
         }
 
 
@@ -59,31 +62,21 @@ class Client {
 
 
 
-        // QUI PASSA SE L UTENTE ESISTE DA NOME O DA COOKIE ;; O SESSIONE AL MOMENT
+        // QUI PASSA SE L UTENTE ESISTE DA SESSION  COOKIE ;; O SESSIONE AL MOMENT
         if (mysqli_num_rows($result) > 0) {
-          //  echo "vc";
-
+          
             $risult = mysqli_fetch_array($result);
 
             // QUI MI PRENDO L ID DELL UTNTE CHE FA LOGIN
             $_SESSION['id_utente'] = $risult['id_utente'];
-
             $cook = session_id();
-
             $sqlupdatecook = "UPDATE utenti set mycooker='$cook' where id_utente='$_SESSION[id_utente]'   ";
-
             $resultupdate = connx()->query($sqlupdatecook);
-
-            // SE OTTENGO UN NOME
-
-
             $lognow = new Scriptjs();
-            $lognow->utenteyaa($email);
-
-
-            /*
-             * <script type="text/javascript" src='login.php?utenteyaa=<?php echo $risult['email']; ?>'></script>
-             */
+            
+            $lognow->utenteyaa($risult['email']);
+    
+         
         } else {
         
 
@@ -121,6 +114,7 @@ class Client {
         $sql = "INSERT into utenti values (null,'$email','$mycooker') ";
         $result = connx()->query($sql);
         if ($result) {
+            
             sleep(2);
         } else {
             echo mysqli_error();
