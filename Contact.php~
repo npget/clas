@@ -97,8 +97,7 @@ sito:
 
     // INSERISCI
     public function insertdb($array = null){
-	
-	if (!$array){ return false; }
+
     $id= $_SESSION['id_utente'];
     $datain=strtotime(date('d-m-Y h:i:s') );
 
